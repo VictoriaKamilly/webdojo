@@ -3,6 +3,10 @@ describe('Formulário de consultoria ', () => {
         cy.start()
         cy.submitLoginForm('papito@webdojo.com', 'katana123')
 
-        cy.get(':nth-child(3) > .grid > :nth-child(1)').click()
+        cy.contains('button', 'Formulários')
+            .should('be.visible')
+            .click()
+
+        
     })
 });
