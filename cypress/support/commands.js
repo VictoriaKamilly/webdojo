@@ -37,3 +37,13 @@ Cypress.Commands.add('submitLoginForm', (email, senha) => {
 
     cy.wait(3000)
 })
+
+Cypress.Commands.add('goTo', (buttonName, pageTitle) => {
+    cy.contains('button', buttonName)
+        //  .parent() vai para o elemento pai e adicionando mais parent ele passa de um elemento pai para outro
+            .should('be.visible')
+            .click()
+
+        cy.contains('h1', pageTitle)
+            .should('be.visible')
+})
