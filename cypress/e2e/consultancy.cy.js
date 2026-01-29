@@ -12,9 +12,9 @@ describe("Formulário de consultoria ", () => {
         cy.get("#email").type("viictoriakamillydesouza@gmail.com");
         cy.get("#phone").type("83987617062"); */
 
-        cy.get('input[placeholder="Digite seu nome completo"').type("Matheus Julio Oliver da Cruz")
-        cy.get('input[placeholder="Digite seu email"').type("matheusjuliodacruz@centroin.com.br")
-        cy.get('input[placeholder="(00) 00000-0000"')
+        cy.get('input[placeholder="Digite seu nome completo"]').type("Matheus Julio Oliver da Cruz")
+        cy.get('input[placeholder="Digite seu email"]').type("matheusjuliodacruz@centroin.com.br")
+        cy.get('input[placeholder="(00) 00000-0000"]')
             .type("83995645296")
             .should('have.value', '(83) 99564-5296') //valida a utilização da mascara
 
@@ -88,7 +88,7 @@ describe("Formulário de consultoria ", () => {
             .selectFile('./cypress/fixtures/relatorioPowerbanks.pdf', { force: true })
 
         cy.get('textArea[placeholder="Descreva mais detalhes sobre sua necessidade"]')
-            .type('"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"')
+            .type('"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."')
 
 
         const techs = [
@@ -118,11 +118,71 @@ describe("Formulário de consultoria ", () => {
         cy.contains('button', 'Enviar formulário')
             .click()
 
-        cy.contains('Sua solicitação de consultoria foi enviada com sucesso! Em breve, nossa equipe entrará em contato através do email fornecido.')
+        cy.contains('.modal', 'Sucesso!')    
             .should('be.visible')
-            .wait(3000)
-        
+            .find('.modal-content')
+            .should('be.visible')
+            .and('have.text', 'Sua solicitação de consultoria foi enviada com sucesso! Em breve, nossa equipe entrará em contato através do email fornecido.')
+            
+
+        /* cy.contains('Sua solicitação de consultoria foi enviada com sucesso! Em breve, nossa equipe entrará em contato através do email fornecido.')
+            .should('be.visible')
+            .wait(3000) */
+
         cy.contains('button', 'Fechar')
             .click()
     });
+
+    it('Deve verificar os campos obrigatorios', () => {
+        cy.start();
+        cy.submitLoginForm("papito@webdojo.com", "katana123")
+
+        cy.goTo("Formulários", "Consultoria")
+
+        cy.contains('button', 'Enviar formulário')
+            .click()
+
+        cy.contains('label', 'Nome Completo *')
+            .parent()
+            .find('p')
+            .should('be.visible')
+            .should('have.text', 'Campo obrigatório')
+            .and('have.class', 'text-red-400')
+            .and('have.css', 'color', 'rgb(248, 113, 113)')
+
+        cy.contains('label', 'Email *')
+            .parent()
+            .find('p')
+            .should('be.visible')
+            .should('have.text', 'Campo obrigatório')
+            .and('have.class', 'text-red-400')
+            .and('have.css', 'color', 'rgb(248, 113, 113)')
+
+        cy.contains('label', 'termos de uso')
+            .parent()
+            .find('p')
+            .should('be.visible')
+            .should('have.text', 'Você precisa aceitar os termos de uso')
+            .and('have.class', 'text-red-400')
+            .and('have.css', 'color', 'rgb(248, 113, 113)')
+        
+        /* cy.contains('p', 'Campo obrigatório')
+            .should('be.visible')
+            .and('have.class', 'text-red-400')
+            .and('have.css', 'color', 'rgb(248, 113, 113)')
+
+        cy.contains('p', 'Campo obrigatório')
+            .should('be.visible')
+            .and('have.class', 'text-red-400')
+            .and('have.css', 'color', 'rgb(248, 113, 113)')  
+            
+            cy.contains('p', 'Você precisa aceitar os termos de uso')
+            .should('be.visible')
+            .and('have.class', 'text-red-400')
+            .and('have.css', 'color', 'rgb(248, 113, 113)')
+            
+            */// dessa forma o cypress não consegue validar corretamente o retorno de campo obrigatorio 
+
+        
+    })
 });
