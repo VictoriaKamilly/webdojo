@@ -19,31 +19,30 @@
 //
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
+// F
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add('start', () => {
-    cy.viewport(1440, 900)
-    cy.visit('http://localhost:3000')
-})
+Cypress.Commands.add("start", () => {
+  cy.viewport(1440, 900);
+  cy.visit("http://localhost:3000");
+});
 
-Cypress.Commands.add('submitLoginForm', (email, senha) => {
-    cy.get('#email').type(email)
-    cy.get('#password').type(senha)
+Cypress.Commands.add("submitLoginForm", (email, senha) => {
+  cy.get("#email").type(email);
+  cy.get("#password").type(senha);
 
-    cy.contains('button', 'Entrar').click();
+  cy.contains("button", "Entrar").click();
 
-    cy.wait(3000)
-})
+  cy.wait(3000);
+});
 
-Cypress.Commands.add('goTo', (buttonName, pageTitle) => {
-    cy.contains('button', buttonName)
-        //  .parent() vai para o elemento pai e adicionando mais parent ele passa de um elemento pai para outro
-            .should('be.visible')
-            .click()
+Cypress.Commands.add("goTo", (buttonName, pageTitle) => {
+  cy.contains("button", buttonName)
+    //  .parent() vai para o elemento pai e adicionando mais parent ele passa de um elemento pai para outro
+    .should("be.visible")
+    .click();
 
-        cy.contains('h1', pageTitle)
-            .should('be.visible')
-})
+  cy.contains("h1", pageTitle).should("be.visible");
+});
