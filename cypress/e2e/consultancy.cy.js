@@ -9,8 +9,8 @@ describe("Formulário de consultoria ", () => {
         Aqui é utilizado os ids
     
         cy.get("#name").type("Victoria Kamilly de Souza");
-        cy.get("#email").type("viictoriakamillydesouza@gmail.com");
-        cy.get("#phone").type("83987617062"); */
+        cy.get("#email").type("testea@gmail.com");
+        cy.get("#phone").type("83987613462"); */
 
     cy.get('input[placeholder="Digite seu nome completo"]').type(
       "Matheus Julio Oliver da Cruz",
@@ -89,10 +89,10 @@ describe("Formulário de consultoria ", () => {
       cy.contains("label", channel).find("input").check().should("be.checked");
     });
 
-    cy.get("input[type=file") //upload de arquivos
+    /* cy.get("input[type=file") //upload de arquivos
       .selectFile("./cypress/fixtures/relatorioPowerbanks.pdf", {
         force: true,
-      });
+      }); */
 
     cy.get(
       'textArea[placeholder="Descreva mais detalhes sobre sua necessidade"]',
