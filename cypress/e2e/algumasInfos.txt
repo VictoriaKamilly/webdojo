@@ -1,0 +1,11 @@
+Para rodar todas as switchs de testes utiliza-se o comando 
+
+npx cypress run 
+
+em caso de rodar todas as switchs de teste de maneira assistida utiliza o comando
+
+npx cypress run --headed
+
+e para rodar todas as baterias de teste em browsers diferentes utiliza-se o comando 
+
+npx cypress run --browser=chrome

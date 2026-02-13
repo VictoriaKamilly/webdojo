@@ -1,4 +1,16 @@
 describe("Formulário de consultoria ", () => {
+  
+  before(() => {
+    cy.log("Iniciando os testes de consultoria");
+  })
+
+  beforeEach(() => {
+    cy.start();
+    cy.submitLoginForm("papito@webdojo.com", "katana123");
+
+    cy.goTo("Formulários", "Consultoria");
+  })
+
   it("Deve solicitar consultoria individual", () => {
     cy.start();
     cy.submitLoginForm("papito@webdojo.com", "katana123");
@@ -187,5 +199,13 @@ describe("Formulário de consultoria ", () => {
             .and('have.css', 'color', 'rgb(248, 113, 113)')
             
             */ // dessa forma o cypress não consegue validar corretamente o retorno de campo obrigatorio
-  });
+  })
+
+  afterEach(() => {
+    cy.log("Isso acontece depois de cada teste");
+  })
+
+  after(() => {
+    cy.log("Isso acontece depois de todos os testes uma única vez");
+  })
 });
