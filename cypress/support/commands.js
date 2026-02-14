@@ -24,7 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import 'cypress-real-events'
+import "cypress-real-events";
 
 Cypress.Commands.add("start", () => {
   cy.viewport(1440, 900);
@@ -47,4 +47,10 @@ Cypress.Commands.add("goTo", (buttonName, pageTitle) => {
     .click();
 
   cy.contains("h1", pageTitle).should("be.visible");
+});
+
+// esse é um gancho helper
+Cypress.Commands.add("login", () => {
+  cy.start();
+  cy.submitLoginForm("papito@webdojo.com", "katana123");
 });

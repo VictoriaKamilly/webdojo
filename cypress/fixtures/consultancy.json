@@ -1,0 +1,42 @@
+{
+  "personal": {
+    "name": "Matheus Julio Oliver da Cruz",
+    "email": "matheusjuliodacruz@centroin.com.br",
+    "phone": "83995645296",
+    "consultancyType": "Individual",
+    "personType": "cpf",
+    "document": "28209846493",
+    "discoveryChannels": [
+      "Instagram",
+      "LinkedIn",
+      "Udemy",
+      "YouTube",
+      "Indicação de Amigo"
+    ],
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    "techs": [
+      "Cypress",
+      "Selenium",
+      "WebdriverIO",
+      "Playwright",
+      "Robot Framework"
+    ],
+    "terms": true
+  },
+  "company": {
+    "name": "Matheus Julio Oliver da Cruz",
+    "email": "matheusjuliodacruz@centroin.com.br",
+    "phone": "83995645296",
+    "consultancyType": "In Company",
+    "personType": "cnpj",
+    "document": "78692596000125",
+    "discoveryChannels": [
+      "LinkedIn"
+    ],
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    "techs": [
+      "Cypress"
+    ],
+    "terms": true
+  }
+}
